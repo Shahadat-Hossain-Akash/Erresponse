@@ -14,12 +14,12 @@ const Navbar = () => {
   const currentPath = usePathname();
 
   return (
-    <nav className="flex justify-between px-12 py-4 mb-4  items-center">
+    <nav className="flex justify-between px-12 py-4 mb-4  items-center font-quicksand">
       <Link href={"/"}>
         <GiTripleScratches size={"2.5rem"} className="text-lime-300" />
       </Link>
 
-      <ul className=" flex space-x-4">
+      <ul className=" flex space-x-4 font-quicksand">
         {links.map((link) => (
           <Link
             key={link.href}
