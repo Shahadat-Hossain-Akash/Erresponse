@@ -4,6 +4,7 @@ import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
 import { Theme } from "@radix-ui/themes";
 import { Quicksand } from "next/font/google";
+import { Providers } from "./providers";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -22,18 +23,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={quicksand.variable}>
-        <Theme
-          accentColor="lime"
-          grayColor="sage"
-          radius="large"
-          scaling="100%"
-          appearance="dark"
-        >
+        <Providers>
           <Navbar />
           <main className={`flex px-12`}>{children}</main>
-        </Theme>
+        </Providers>
       </body>
     </html>
   );
