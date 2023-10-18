@@ -43,12 +43,13 @@ const NewIssue = () => {
           size={"lg"}
           onClose={() => setMainError(!mainError)}
           color="danger"
-          variant="flat"
+          variant="faded"
         >
           An error occurs!
         </Chip>
       )}{" "}
       <Input
+        className=" text-slate-400"
         key={"outside"}
         label="Title"
         labelPlacement={"outside"}
@@ -57,6 +58,7 @@ const NewIssue = () => {
         errorMessage={error?.title?._errors[0]}
       />{" "}
       <Textarea
+        className=" text-slate-400"
         label="Description"
         labelPlacement="outside"
         placeholder="Enter your description"
@@ -67,7 +69,7 @@ const NewIssue = () => {
         type="submit"
         variant="shadow"
         color="primary"
-        className="flex  text-black"
+        className="flex  text-white"
         isLoading={isSubmitting}
       >
         {" "}

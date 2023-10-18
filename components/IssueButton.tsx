@@ -6,7 +6,7 @@ const IssueButton = () => {
   return (
     <Button
       radius="sm"
-      className=" text-black"
+      className=" text-white"
       color="primary"
       variant="shadow"
     >
