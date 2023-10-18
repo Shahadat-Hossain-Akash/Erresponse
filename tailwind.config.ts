@@ -15,8 +15,9 @@ const config: Config = {
         'quicksand': ['var(--font-quicksand)']
       },
       colors: {
-        "lightLime" : "#e1ff53"
-      }
+        "lightLime" : "#EA712E"
+        
+      },
     },
   },
   darkMode: "class",
@@ -25,13 +26,21 @@ const config: Config = {
       themes: {
         light: {
           // ...
-          colors: {},
+          
+          colors: {
+            background: "#f2f2f2",
+            primary: "#EA712E",
+            content1: "#f2f2f2",
+            secondary: "#FCAD81"
+          },
+          
         },
         dark: {
           // ...
           colors: {
             background: "#111111",
-            primary: "#e1ff53"
+            primary: "#EA712E",
+            secondary: "##FCAD81"
           },
         },
         // ... custom themes

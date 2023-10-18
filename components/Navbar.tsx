@@ -17,7 +17,11 @@ const Navbar = () => {
   return (
     <nav className="flex justify-between px-12 py-4 mb-4  items-center font-quicksand">
       <Link href={"/"}>
-        <GiPerpendicularRings size={"2.5rem"} className="text-gray-100" />
+        <GiPerpendicularRings
+          color={"#EA712E"}
+          size={"2.5rem"}
+          className="text-gray-100"
+        />
       </Link>
 
       <div className=" flex space-x-4 font-quicksand">
@@ -28,9 +32,9 @@ const Navbar = () => {
                 key={idx}
                 href={link.href}
                 className={classnames({
-                  "hover:text-lime-50 transition-colors": true,
-                  "text-lime-200": link.href === currentPath,
-                  "text-lime-100": link.href !== currentPath,
+                  "hover:text-amber-500 transition-colors": true,
+                  "text-amber-500": link.href === currentPath,
+                  "text-amber-400": link.href !== currentPath,
                 })}
               >
                 {link.name}
