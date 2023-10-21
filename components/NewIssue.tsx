@@ -10,11 +10,11 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createIssueSchema } from "@/app/validationSchema";
+import { issueSchema } from "@/app/validationSchema";
 import z from "zod";
 import { Chip } from "@nextui-org/react";
 
-type IssueForm = z.infer<typeof createIssueSchema>;
+type IssueForm = z.infer<typeof issueSchema>;
 
 const NewIssue = () => {
   const { register, handleSubmit } = useForm<IssueForm>({});

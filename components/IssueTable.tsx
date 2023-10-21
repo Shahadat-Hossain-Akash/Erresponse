@@ -19,6 +19,8 @@ import {
   Pagination,
 } from "@nextui-org/react";
 import IssueStatusChip from "./IssueStatusChip";
+import Link from "next/link";
+import { CgArrowTopRight } from "react-icons/cg";
 
 const IssueTable = ({ data }: any) => {
   return (
@@ -26,7 +28,6 @@ const IssueTable = ({ data }: any) => {
       <Table
         isHeaderSticky
         bottomContentPlacement="outside"
-        selectionMode="multiple"
         topContentPlacement="outside"
         color="warning"
         shadow="none"
@@ -37,6 +38,7 @@ const IssueTable = ({ data }: any) => {
             Status
           </TableColumn>
           <TableColumn className="text-medium">Created at</TableColumn>
+          <TableColumn className="text-medium">Details</TableColumn>
         </TableHeader>
         <TableBody>
           {data.map((issue: any) => (
@@ -52,6 +54,17 @@ const IssueTable = ({ data }: any) => {
               </TableCell>
               <TableCell className="text-slate-500">
                 {issue.createdAt.toDateString()}
+              </TableCell>
+              <TableCell className="text-slate-500">
+                <Link href={`/issues/${issue.id}`}>
+                  <Chip
+                    endContent={<CgArrowTopRight size={18} />}
+                    variant="flat"
+                    color="primary"
+                  >
+                    Details
+                  </Chip>
+                </Link>
               </TableCell>
             </TableRow>
           ))}

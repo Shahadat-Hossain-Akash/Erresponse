@@ -27,19 +27,19 @@ const Navbar = () => {
       <div className=" flex space-x-4 font-quicksand">
         {links.map((link, idx) => (
           <>
-            <Button key={idx} variant="light" color="primary">
-              <Link
-                key={idx}
-                href={link.href}
-                className={classnames({
-                  "hover:text-amber-500 transition-colors": true,
-                  "text-amber-500": link.href === currentPath,
-                  "text-amber-400": link.href !== currentPath,
-                })}
-              >
+            <Link
+              key={idx}
+              href={link.href}
+              className={classnames({
+                "hover:text-amber-700 transition-colors": true,
+                "text-amber-600": link.href === currentPath,
+                "text-amber-500": link.href !== currentPath,
+              })}
+            >
+              <Button key={idx} variant="light" color="primary">
                 {link.name}
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </>
         ))}
       </div>
