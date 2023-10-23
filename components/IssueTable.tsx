@@ -39,24 +39,27 @@ const IssueTable = ({ data }: any) => {
           </TableColumn>
           <TableColumn className="text-medium">Created at</TableColumn>
           <TableColumn className="text-medium">Details</TableColumn>
+          <TableColumn className="text-medium hidden md:table-cell">
+            Assigned to
+          </TableColumn>
         </TableHeader>
         <TableBody>
-          {data.map((issue: any) => (
+          {data?.map((issue: any) => (
             <TableRow key={issue.id}>
               <TableCell className="text-slate-500">
-                {issue.title}
+                {issue?.title}
                 <div className="block mt-1 md:hidden">
-                  {<IssueStatusChip status={issue.status} />}
+                  {<IssueStatusChip status={issue?.status} />}
                 </div>
               </TableCell>
               <TableCell className="text-slate-500 hidden md:table-cell">
-                <IssueStatusChip status={issue.status} />
+                <IssueStatusChip status={issue?.status} />
               </TableCell>
               <TableCell className="text-slate-500">
-                {issue.createdAt.toDateString()}
+                {issue?.createdAt.toDateString()}
               </TableCell>
               <TableCell className="text-slate-500">
-                <Link href={`/issues/${issue.id}`}>
+                <Link href={`/issues/${issue?.id}`}>
                   <Chip
                     endContent={<CgArrowTopRight size={18} />}
                     variant="flat"
@@ -65,6 +68,24 @@ const IssueTable = ({ data }: any) => {
                     Details
                   </Chip>
                 </Link>
+                <div className="block mt-1 md:hidden">
+                  <Chip
+                    variant="flat"
+                    color="default"
+                    className="text-orange-400"
+                  >
+                    {issue?.assignToUserId ?? "TBA"}
+                  </Chip>
+                </div>
+              </TableCell>
+              <TableCell className="text-slate-500 hidden md:table-cell">
+                <Chip
+                  variant="flat"
+                  color="default"
+                  className="text-orange-400"
+                >
+                  {issue?.assignToUserId ?? "TBA"}
+                </Chip>
               </TableCell>
             </TableRow>
           ))}
