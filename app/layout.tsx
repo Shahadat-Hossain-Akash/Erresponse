@@ -2,9 +2,9 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
-import { Theme } from "@radix-ui/themes";
 import { Quicksand } from "next/font/google";
 import { Providers } from "./providers";
+import AuthProvider from "./auth/Providers";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -25,10 +25,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="light">
       <body className={quicksand.variable}>
-        <Providers>
-          <Navbar />
-          <main className={`flex px-12`}>{children}</main>
-        </Providers>
+        <AuthProvider>
+          <Providers>
+            <Navbar />
+            <main className={`flex px-12`}>{children}</main>
+          </Providers>
+        </AuthProvider>
       </body>
     </html>
   );
