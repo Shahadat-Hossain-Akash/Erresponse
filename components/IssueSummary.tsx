@@ -1,19 +1,8 @@
 "use client";
 
-import React, { ReactElement } from "react";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Divider,
-  Link,
-  Image,
-  Chip,
-} from "@nextui-org/react";
+import { Card, CardBody, CardHeader, Chip, Divider } from "@nextui-org/react";
 import { Status } from "@prisma/client";
 import { BsArrowDownUp } from "react-icons/bs";
-import { Spacer } from "@nextui-org/react";
 
 interface Props {
   open: number;

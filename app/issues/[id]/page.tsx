@@ -1,8 +1,6 @@
-import authOptions from "@/app/auth/authOptions";
 import IssueDetails from "@/components/IssueDetails";
 import prisma from "@/prisma/client";
 import { getServerSession } from "next-auth";
-import { getSession } from "next-auth/react";
 import { notFound } from "next/navigation";
 import React, { cache } from "react";
 

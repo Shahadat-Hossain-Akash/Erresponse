@@ -1,7 +1,6 @@
 "use client";
-import IssueStatusChip from "@/components/IssueStatusChip";
+
 import {
-  Spinner,
   Table,
   TableBody,
   TableCell,

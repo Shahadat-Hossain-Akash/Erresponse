@@ -1,13 +1,7 @@
 "use client";
-import React, { useState } from "react";
-import {
-  Pagination as Paginate,
-  Button,
-  usePagination,
-  PaginationItemType,
-  PaginationItemRenderProps,
-} from "@nextui-org/react";
+import { Pagination as Paginate, PaginationItemType } from "@nextui-org/react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 
 interface Props {
   totalPage: string;

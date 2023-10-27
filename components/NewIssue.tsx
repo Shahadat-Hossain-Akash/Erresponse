@@ -1,18 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { Button } from "@nextui-org/react";
-import SimpleMDE from "react-simplemde-editor";
-import "easymde/dist/easymde.min.css";
-import { Input } from "@nextui-org/react";
-import { Textarea } from "@nextui-org/react";
-import { useForm } from "react-hook-form";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { issueSchema } from "@/app/validationSchema";
+import { Button, Chip, Input, Textarea } from "@nextui-org/react";
+import axios from "axios";
+import "easymde/dist/easymde.min.css";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import z from "zod";
-import { Chip } from "@nextui-org/react";
 
 type IssueForm = z.infer<typeof issueSchema>;
 

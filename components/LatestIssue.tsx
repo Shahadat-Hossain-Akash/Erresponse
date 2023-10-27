@@ -1,13 +1,15 @@
 "use client";
-import { Button, CardFooter, CardHeader, Table } from "@nextui-org/react";
-import React from "react";
-import { Card, CardBody } from "@nextui-org/react";
-import { Issue } from "@prisma/client";
+import {
+  Avatar,
+  Button,
+  Card,
+  CardFooter,
+  CardHeader,
+} from "@nextui-org/react";
 import Link from "next/link";
+import { AiOutlineUser } from "react-icons/ai";
 import { BsArrowUpRight } from "react-icons/bs";
 import IssueStatusChip from "./IssueStatusChip";
-import { Avatar, AvatarIcon } from "@nextui-org/react";
-import { AiOutlineUser } from "react-icons/ai";
 
 const LatestIssue = ({ issues }: any) => {
   return (

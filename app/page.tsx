@@ -1,17 +1,9 @@
-import Navbar from "@/components/Navbar";
-import Pagination from "@/components/Pagination";
-import { Button } from "@radix-ui/themes";
-import Image from "next/image";
 import LatestIssue from "../components/LatestIssue";
 import prisma from "@/prisma/client";
 import IssueSummary from "@/components/IssueSummary";
 import IssueCharts from "@/components/IssueCharts";
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: { page: string };
-}) {
+export default async function Home() {
   const issues = await prisma.issue.findMany({
     orderBy: { createdAt: "desc" },
     take: 3,

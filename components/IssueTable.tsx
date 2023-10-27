@@ -1,31 +1,18 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
 import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-  Input,
-  Button,
-  DropdownTrigger,
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
   Chip,
-  User,
-  SortDescriptor,
+  Table,
+  TableBody,
+  TableCell,
+  TableColumn,
+  TableHeader,
+  TableRow,
 } from "@nextui-org/react";
-import IssueStatusChip from "./IssueStatusChip";
-import Link from "next/link";
-import { CgArrowTopRight } from "react-icons/cg";
-import NextLink from "next/link";
-import axios from "axios";
-import { Issue, Status } from "@prisma/client";
-import { useRouter } from "next/navigation";
+import { default as Link, default as NextLink } from "next/link";
 import { useSearchParams } from "next/navigation";
+import { CgArrowTopRight } from "react-icons/cg";
+import IssueStatusChip from "./IssueStatusChip";
 import Pagination from "./Pagination";
 
 const IssueTable = ({ data, page, issueCount, pageSize }: any) => {

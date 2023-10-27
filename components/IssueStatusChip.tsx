@@ -1,5 +1,5 @@
 import { Chip } from "@nextui-org/react";
-import { Status, Issue } from "@prisma/client";
+import { Status } from "@prisma/client";
 import React from "react";
 
 const statusMap: Record<
