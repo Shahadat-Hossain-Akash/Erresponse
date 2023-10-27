@@ -55,7 +55,9 @@ const IssuePage = async ({ searchParams }: Props) => {
   );
 };
 
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
+
+export const revalidate = 30;
 
 export const metadata: Metadata = {
   title: "Erresponse - An Issue tracker",
