@@ -40,7 +40,7 @@ const config: Config = {
           colors: {
             background: "#111111",
             primary: "#EA712E",
-            secondary: "##FCAD81"
+            secondary: "#FCAD81"
           },
         },
         // ... custom themes
