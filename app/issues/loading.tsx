@@ -35,7 +35,7 @@ export default function LoadingIssuePage() {
         </TableHeader>
         <TableBody>
           {data.map((issue: any) => (
-            <TableRow key={issue.id}>
+            <TableRow key={issue.title}>
               <TableCell className="text-slate-500">
                 <Skeleton />
                 <div className="block mt-1 md:hidden">

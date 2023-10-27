@@ -5,7 +5,7 @@ import classnames from "classnames";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import { GiPerpendicularRings } from "react-icons/gi";
+//import { GiPerpendicularRings } from "react-icons/gi";
 import { useSession } from "next-auth/react";
 import {
   Dropdown,
@@ -36,32 +36,41 @@ const Navbar = () => {
 
   return (
     <nav className="flex justify-between px-12 py-4 mb-4  items-center font-quicksand">
-      <Link href={"/"}>
-        <GiPerpendicularRings
+      <Link href={"/"} aria-label="logo">
+        {/*<GiPerpendicularRings
           color={"#EA712E"}
           size={"2.5rem"}
           className="text-gray-100"
-        />
+  />*/}{" "}
+        <p className="text-orange-400 font-semibold text-3xl">TrackIt</p>
       </Link>
 
-      <ul className=" flex space-x-4 font-quicksand">
-        {links.map((link, idx) => (
-          <li key={idx}>
-            <Link
-              key={idx}
-              href={link.href}
-              className={classnames({
-                "hover:text-amber-700 transition-colors": true,
-                "text-amber-600": link.href === currentPath,
-                "text-amber-500": link.href !== currentPath,
-              })}
-            >
-              <Button key={idx} variant="light" color="primary">
-                {link.name}
-              </Button>
-            </Link>
-          </li>
-        ))}
+      <div className=" flex space-x-4 font-quicksand list-none">
+        <ul className=" flex space-x-4 font-quicksand">
+          {links.map((link, idx) => (
+            <li key={idx}>
+              <Link
+                aria-label="pages"
+                key={idx}
+                href={link.href}
+                className={classnames({
+                  "hover:text-amber-700 transition-colors": true,
+                  "text-amber-600": link.href === currentPath,
+                  "text-amber-500": link.href !== currentPath,
+                })}
+              >
+                <Button
+                  key={idx}
+                  variant="light"
+                  color="primary"
+                  aria-label="pages-name"
+                >
+                  {link.name}
+                </Button>
+              </Link>
+            </li>
+          ))}
+        </ul>
         {status === "authenticated" ? (
           <Dropdown
             placement="left"
@@ -77,7 +86,12 @@ const Navbar = () => {
               placement="bottom-right"
             >
               <DropdownTrigger>
-                <Avatar src={session.user?.image!} fallback="?" />
+                <Avatar
+                  src={session.user?.image!}
+                  fallback="?"
+                  aria-label="user"
+                  aria-roledescription="user"
+                />
               </DropdownTrigger>
             </Badge>
             <DropdownMenu
@@ -91,6 +105,7 @@ const Navbar = () => {
                 showDivider
                 key="profile"
                 className="h-14 gap-2"
+                aria-label="user"
               >
                 <p className="font-bold">Signed in as</p>
                 <p className="font-bold">@{session.user?.name}</p>
@@ -101,15 +116,15 @@ const Navbar = () => {
             </DropdownMenu>
           </Dropdown>
         ) : status !== "loading" ? (
-          <Link href="/api/auth/signin">
-            <Button variant="flat" color="warning">
+          <Link href="/api/auth/signin" aria-label="sign-in">
+            <Button variant="flat" color="warning" aria-label="sign-in-button">
               Sign in
             </Button>
           </Link>
         ) : (
           <Spinner />
         )}
-      </ul>
+      </div>
     </nav>
   );
 };

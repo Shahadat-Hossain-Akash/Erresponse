@@ -1,16 +1,41 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 
+import Spinner from "@/components/Spinner";
 import prisma from "@/prisma/client";
-import IssueTable from "@/components/IssueTable";
-import LoadingIssuePage from "./loading";
-import IssueActions from "./IssueActions";
-import IssueFilter from "@/components/IssueFilter";
 import { Status } from "@prisma/client";
 import { Metadata } from "next";
+import dynamic from "next/dynamic";
+import LoadingIssuePage from "./loading";
+
+const LazyIssueTable = dynamic(() => import("@/components/IssueTable"));
+const LazyIssueFilter = dynamic(() => import("@/components/IssueFilter"));
+const LazyIssueAction = dynamic(() => import("./IssueActions"));
 
 interface Props {
   searchParams: { status: Status; orderBy: any; page: string };
 }
+
+const fetchData = async (
+  where: { status: Status | undefined },
+  orderBy: { [x: number]: string } | undefined,
+  page: number,
+  pageSize: number
+) => {
+  const dataPromise = prisma.issue.findMany({
+    where,
+    orderBy,
+    skip: (page - 1) * pageSize,
+    take: pageSize,
+  });
+
+  const issueCountPromise = prisma.issue.count({ where });
+
+  const [data, issueCount] = await Promise.all([
+    dataPromise,
+    issueCountPromise,
+  ]);
+  return { data, issueCount };
+};
 
 const IssuePage = async ({ searchParams }: Props) => {
   const columns = ["title", "createdAt", "status"];
@@ -28,23 +53,20 @@ const IssuePage = async ({ searchParams }: Props) => {
   const page = parseInt(searchParams.page) || 1;
   const pageSize = 10;
 
-  const data = await prisma.issue.findMany({
-    where,
-    orderBy,
-    skip: (page - 1) * pageSize,
-    take: pageSize,
-  });
-
-  const issueCount = await prisma.issue.count({ where });
+  const { data, issueCount } = await fetchData(where, orderBy, page, pageSize);
 
   return (
     <div className="flex flex-col font-quicksand space-y-4 w-full ">
-      <IssueActions />
+      <Suspense fallback={<Spinner />}>
+        <LazyIssueAction />
+      </Suspense>
       <div className="flex flex-wrap md:flex-nowrap gap-4">
-        <IssueFilter />
+        <Suspense fallback={<Spinner />}>
+          <LazyIssueFilter />
+        </Suspense>
       </div>
       <Suspense fallback={<LoadingIssuePage />}>
-        <IssueTable
+        <LazyIssueTable
           data={data}
           page={page}
           issueCount={issueCount}
@@ -55,9 +77,7 @@ const IssuePage = async ({ searchParams }: Props) => {
   );
 };
 
-//export const dynamic = "force-dynamic";
-
-export const revalidate = 30;
+export const revalidate = 5;
 
 export const metadata: Metadata = {
   title: "Erresponse - An Issue tracker",

@@ -2,7 +2,7 @@
 
 import { Button } from "@nextui-org/react";
 import React, { useState } from "react";
-import { PiTrashSimpleLight } from "react-icons/pi";
+//import { PiTrashSimpleLight } from "react-icons/pi";
 import {
   Modal,
   ModalContent,
@@ -39,12 +39,12 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
         color="danger"
         variant="light"
         aria-label="Delete"
-        isIconOnly
         onPress={onOpen}
         isDisabled={isDeleteing}
         isLoading={isDeleteing}
       >
-        <PiTrashSimpleLight size={20} />
+        {/*<PiTrashSimpleLight size={20} />*/}
+        Delete
       </Button>
 
       <Modal

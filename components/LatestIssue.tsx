@@ -56,8 +56,9 @@ const LatestIssue = ({ issues }: any) => {
                 isIconOnly
                 className="rounded-full"
                 color="primary"
+                aria-label="link-button"
               >
-                <Link href={`/issues/${issue.id}`}>
+                <Link href={`/issues/${issue.id}`} aria-label="link">
                   <BsArrowUpRight />
                 </Link>
               </Button>

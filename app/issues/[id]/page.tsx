@@ -1,9 +1,11 @@
-import IssueDetails from "@/components/IssueDetails";
 import prisma from "@/prisma/client";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
-import React, { cache } from "react";
+import React, { Suspense, cache } from "react";
+import dynamic from "next/dynamic";
+import LoadingIssueDetails from "./loading";
 
+const LazyIssueDetails = dynamic(() => import("@/components/IssueDetails"));
 interface Props {
   params: { id: string };
 }
@@ -17,11 +19,15 @@ const IssueDetailsPage = async ({ params }: Props) => {
   const validate = parseInt(params.id);
   if (typeof validate !== "number") notFound();
 
-  const issue = await fetchIssue(parseInt(params?.id));
+  const issue = await fetchIssue(validate);
 
   if (!issue) notFound();
 
-  return <IssueDetails issue={issue} session={session} />;
+  return (
+    <Suspense fallback={<LoadingIssueDetails />}>
+      <LazyIssueDetails issue={issue} session={session} />
+    </Suspense>
+  );
 };
 
 export async function generateMetadata({ params }: Props) {
@@ -32,5 +38,7 @@ export async function generateMetadata({ params }: Props) {
     description: "Details of issue " + issue?.id,
   };
 }
+
+export const revalidate = 5;
 
 export default IssueDetailsPage;

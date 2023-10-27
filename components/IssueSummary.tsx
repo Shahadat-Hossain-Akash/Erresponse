@@ -38,7 +38,7 @@ const IssueSummary = ({ open, inProgress, closed }: Props) => {
       {statuses.map((status) => (
         <Card
           key={status.status}
-          className="max-w-[400px] w-full drop-shadow-[5px_5px_3px_rgba(0,0,0,0.05)] hover:shadow-md"
+          className="max-w-lg min-w-screen w-full drop-shadow-[5px_5px_3px_rgba(0,0,0,0.05)] hover:shadow-md"
         >
           <CardHeader className="flex gap-3">
             <div className="flex flex-col">

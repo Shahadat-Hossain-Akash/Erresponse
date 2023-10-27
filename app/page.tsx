@@ -5,11 +5,14 @@ import IssueCharts from "@/components/IssueCharts";
 import { cache } from "react";
 import { Status } from "@prisma/client";
 
-const fetchCount = cache((type: Status) =>
-  prisma.issue.count({ where: { status: type } })
-);
+async function fetchData() {
+  const fetchCount = cache((type: Status) =>
+    prisma.issue.count({ where: { status: type } })
+  );
 
-export default async function Home() {
+  const open = await fetchCount("OPEN");
+  const inProgress = await fetchCount("IN_PROGRESS");
+  const closed = await fetchCount("CLOSED");
   const issues = await prisma.issue.findMany({
     orderBy: { createdAt: "desc" },
     take: 3,
@@ -18,21 +21,11 @@ export default async function Home() {
     },
   });
 
-  {
-    /*const open = await prisma.issue.count({
-    where: { status: "OPEN" },
-  });
-  const inProgress = await prisma.issue.count({
-    where: { status: "IN_PROGRESS" },
-  });
-  const closed = await prisma.issue.count({
-    where: { status: "CLOSED" },
-  });*/
-  }
+  return { open, inProgress, closed, issues };
+}
 
-  const open = await fetchCount("OPEN");
-  const inProgress = await fetchCount("IN_PROGRESS");
-  const closed = await fetchCount("CLOSED");
+export default async function Home() {
+  const { open, inProgress, closed, issues } = await fetchData();
 
   return (
     <div className="flex gap-4 flex-col font-quicksand min-h-screen text-zinc-500 max-w-screen mb-10">

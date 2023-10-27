@@ -1,7 +1,5 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
-import "@radix-ui/themes/styles.css";
-import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
 import { Providers } from "./providers";
 import AuthProvider from "./auth/Providers";
@@ -12,12 +10,12 @@ const quicksand = Quicksand({
   variable: "--font-quicksand",
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Erresponse - An Issue tracker",
   description: "An project issue tracking app",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;

@@ -37,6 +37,7 @@ const Pagination = ({ totalPage, pageSize, current }: Props) => {
         color="secondary"
         onChange={(page: number, type?: any) => handleChange(page, type)}
         classNames={{
+          base: "text-white",
           item: "text-orange-400",
         }}
         page={currentPage}

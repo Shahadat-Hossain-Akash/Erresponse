@@ -1,7 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
 import IssueForm from "../../_components/IssueForm";
 import prisma from "@/prisma/client";
 import { notFound } from "next/navigation";
+import dynamic from "next/dynamic";
+import LoadingNewIssue from "../../new/loading";
+
+const LazyIssueForm = dynamic(() => import("../../_components/IssueForm"));
 
 interface Props {
   params: { id: string };
@@ -13,9 +17,9 @@ const EditIssuePage = async ({ params }: Props) => {
   });
   if (!issue) notFound();
   return (
-    <div className="flex w-full">
-      <IssueForm issue={issue} />
-    </div>
+    <Suspense fallback={<LoadingNewIssue />}>
+      <LazyIssueForm issue={issue} />
+    </Suspense>
   );
 };
 

@@ -1,18 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    async headers() {
-        return [
-            {
-                source: '/:path*',
-                headers: [
-                    {
-                        key: 'referrer-policy',
-                        value: 'no-referrer'
-                    }
-                ]
-            }
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'referrer-policy',
+            value: 'no-referrer'
+          }
         ]
-    }
+      }
+    ]
+  }
 }
 
 module.exports = nextConfig
@@ -20,7 +20,7 @@ module.exports = nextConfig
 
 // Injected content via Sentry wizard below
 
-const { withSentryConfig } = require("@sentry/nextjs");
+{/*const { withSentryConfig } = require("@sentry/nextjs");
 
 module.exports = withSentryConfig(
   module.exports,
@@ -53,3 +53,4 @@ module.exports = withSentryConfig(
     disableLogger: true,
   }
 );
+*/}

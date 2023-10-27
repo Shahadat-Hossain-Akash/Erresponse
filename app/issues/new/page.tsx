@@ -1,10 +1,15 @@
-import React from "react";
-import IssueForm from "../_components/IssueForm";
+import React, { Suspense } from "react";
+import LoadingNewIssue from "./loading";
+import dynamic from "next/dynamic";
 
-const NewIssuePage = async () => {
+const LazyIssueForm = dynamic(() => import("../_components/IssueForm"));
+
+const NewIssuePage = () => {
   return (
     <div className="flex w-full">
-      <IssueForm />
+      <Suspense fallback={<LoadingNewIssue />}>
+        <LazyIssueForm />
+      </Suspense>
     </div>
   );
 };
