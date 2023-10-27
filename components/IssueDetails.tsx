@@ -10,14 +10,12 @@ import { useSession } from "next-auth/react";
 import { Select, SelectItem, Avatar } from "@nextui-org/react";
 import { User } from "@prisma/client";
 import axios from "axios";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
 
 const IssueDetails = ({ issue }: any, { session }: any) => {
   const { status } = useSession();
 
   const [users, setUsers] = useState<any>([]);
-  const [name, setName] = useState<User[]>([]);
 
   useEffect(() => {
     const fetchUser = async () => {
