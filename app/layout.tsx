@@ -13,8 +13,8 @@ const quicksand = Quicksand({
 });
 
 export const metadata: Metadata = {
-  title: "Erresponse",
-  description: "An issue tracking app",
+  title: "Erresponse - An Issue tracker",
+  description: "An project issue tracking app",
 };
 
 export default function RootLayout({
@@ -28,7 +28,9 @@ export default function RootLayout({
         <AuthProvider>
           <Providers>
             <Navbar />
-            <main className={`flex px-12`}>{children}</main>
+            <main className={`px-4 md:px-12 flex max-w-screen`}>
+              {children}
+            </main>
           </Providers>
         </AuthProvider>
       </body>
