@@ -25,8 +25,8 @@ const statusMap: Record<
 
 const IssueStatusChip = ({ status }: { status: Status }) => {
   return (
-    <Chip variant="flat" color={statusMap[status].color}>
-      {statusMap[status].label}
+    <Chip variant="flat" color={statusMap[status]?.color}>
+      {statusMap[status]?.label}
     </Chip>
   );
 };

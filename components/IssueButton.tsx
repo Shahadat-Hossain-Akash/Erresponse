@@ -4,14 +4,16 @@ import { Button } from "@nextui-org/react";
 
 const IssueButton = () => {
   return (
-    <Button
-      radius="sm"
-      className=" text-white"
-      color="primary"
-      variant="shadow"
-    >
-      Create an issue
-    </Button>
+    <div className="w-fit">
+      <Button
+        radius="sm"
+        className=" text-white"
+        color="primary"
+        variant="shadow"
+      >
+        Create an issue
+      </Button>
+    </div>
   );
 };
 
