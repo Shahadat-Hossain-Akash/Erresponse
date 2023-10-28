@@ -42,7 +42,7 @@ const Navbar = () => {
           size={"2.5rem"}
           className="text-gray-100"
   />*/}{" "}
-        <p className="text-orange-400 font-semibold text-3xl">TrackIt</p>
+        <p className="text-orange-400 font-semibold text-3xl">Erresponse</p>
       </Link>
 
       <div className=" flex space-x-4 font-quicksand list-none">
