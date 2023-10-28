@@ -5,9 +5,8 @@ import IssueCharts from "@/components/IssueCharts";
 import { cache } from "react";
 import { Status } from "@prisma/client";
 
-const fetchCount = cache((type: Status) =>
-  prisma.issue.count({ where: { status: type } })
-);
+const fetchCount = (type: Status) =>
+  prisma.issue.count({ where: { status: type } });
 
 export default async function Home() {
   const issues = await prisma.issue.findMany({

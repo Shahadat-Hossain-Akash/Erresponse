@@ -2,10 +2,10 @@ import prisma from "@/prisma/client";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 import React, { Suspense, cache } from "react";
-import dynamic from "next/dynamic";
+import Dynamic from "next/dynamic";
 import LoadingIssueDetails from "./loading";
 
-const LazyIssueDetails = dynamic(() => import("@/components/IssueDetails"));
+const LazyIssueDetails = Dynamic(() => import("@/components/IssueDetails"));
 interface Props {
   params: { id: string };
 }
@@ -39,6 +39,6 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-export const revalidate = 5;
+export const dynamic = "force-dynamic";
 
 export default IssueDetailsPage;
