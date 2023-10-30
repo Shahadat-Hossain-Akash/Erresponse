@@ -74,7 +74,7 @@ const IssueCharts = ({ open, inProgress, closed }: Props) => {
             wrapperStyle={{ fill: "red" }}
             contentStyle={{ visibility: "hidden" }}
           />
-          <Bar dataKey={"value"} fill="#FCAD81" barSize={120} />
+          <Bar dataKey={"value"} fill="#FCAD81" />
         </BarChart>
       </ResponsiveContainer>
     </Card>
