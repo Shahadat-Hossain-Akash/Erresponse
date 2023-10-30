@@ -52,10 +52,10 @@ const IssueCharts = ({ open, inProgress, closed }: Props) => {
   return (
     <Card
       shadow="lg"
-      className="pt-8 max-w-[992px] w-full max-h-[50vh] pr-16 bg-transparent"
+      className="max-w-[992px] w-full max-h-[50vh] bg-transparent"
     >
       <ResponsiveContainer>
-        <BarChart data={datas}>
+        <BarChart data={datas} margin={{ top: 20, right: 40 }}>
           <XAxis
             dataKey={"label"}
             axisLine={{ stroke: "#EA712E" }}

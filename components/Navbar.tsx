@@ -35,18 +35,20 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between px-12 py-4 mb-4  items-center font-quicksand">
+    <nav className="flex justify-between px-4 md:px-12 py-4 mb-4  items-center font-quicksand ">
       <Link href={"/"} aria-label="logo">
         {/*<GiPerpendicularRings
           color={"#EA712E"}
           size={"2.5rem"}
           className="text-gray-100"
   />*/}{" "}
-        <p className="text-orange-400 font-semibold text-3xl">Erresponse</p>
+        <p className="text-orange-400 font-semibold text-xl md:text-3xl ">
+          Erresponse
+        </p>
       </Link>
 
-      <div className=" flex space-x-4 font-quicksand list-none">
-        <ul className=" flex space-x-4 font-quicksand">
+      <div className="w-full-screen flex space-x-1 md:space-x-4 font-quicksand list-none">
+        <ul className=" flex gap-1 font-quicksand">
           {links.map((link, idx) => (
             <li key={idx}>
               <Link
@@ -64,6 +66,7 @@ const Navbar = () => {
                   variant="light"
                   color="primary"
                   aria-label="pages-name"
+                  className="text-xs md:text-sm"
                 >
                   {link.name}
                 </Button>

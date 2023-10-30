@@ -50,9 +50,8 @@ const IssueTable = ({ data, page, issueCount, pageSize }: any) => {
         color="warning"
         shadow="none"
         removeWrapper
-        className="min-h-[60vh]"
       >
-        <TableHeader className="shadow-none ">
+        <TableHeader>
           {columns.map((column) => (
             <TableColumn
               key={column.value}
