@@ -8,6 +8,7 @@ import {
   YAxis,
   Bar,
   CartesianGrid,
+  Tooltip,
 } from "recharts";
 
 interface Props {
@@ -51,11 +52,11 @@ const IssueCharts = ({ open, inProgress, closed }: Props) => {
 
   return (
     <Card
-      shadow="lg"
-      className="max-w-[992px] w-full max-h-[50vh] bg-transparent"
+      shadow="none"
+      className=" max-w-[992px] w-full max-h-[50vh] bg-transparent"
     >
       <ResponsiveContainer>
-        <BarChart data={datas} margin={{ top: 20, right: 40 }}>
+        <BarChart data={data} margin={{ top: 20, right: 40 }}>
           <XAxis
             dataKey={"label"}
             axisLine={{ stroke: "#EA712E" }}
@@ -63,14 +64,17 @@ const IssueCharts = ({ open, inProgress, closed }: Props) => {
             tickLine={{ stroke: "#EA712E" }}
           />
           <YAxis
-            axisLine={false}
+            axisLine={{ stroke: "#EA712E" }}
             tick={{ fill: "#EA712E" }}
             tickLine={{ stroke: "#EA712E" }}
           />
-          <CartesianGrid strokeDasharray="5 5" />
-          <Bar dataKey="open" fill="#FCAD81" />
-          <Bar dataKey="inProgress" fill="#FCAD81" />
-          <Bar dataKey="closed" fill="#FCAD81" />
+          <Tooltip
+            labelStyle={{ color: "#EA712E" }}
+            cursor={{ fill: "#EA702E23" }}
+            wrapperStyle={{ fill: "red" }}
+            contentStyle={{ visibility: "hidden" }}
+          />
+          <Bar dataKey={"value"} fill="#FCAD81" barSize={120} />
         </BarChart>
       </ResponsiveContainer>
     </Card>

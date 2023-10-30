@@ -29,8 +29,8 @@ export default async function Home() {
       <div className="text-3xl sm:text-6xl font-semibold text-orange-400">
         Latest Issues
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-zinc-500 w-full mb-10 ">
-        <div className="flex flex-col w-full gap-4">
+      <div className=" grid grid-cols-1 md:grid-cols-2 gap-4 text-zinc-500 w-full mb-10 ">
+        <div className="order-first md:order-last flex flex-col w-full gap-4">
           <IssueSummary open={open} inProgress={inProgress} closed={closed} />
           <LatestIssue issues={issues} />
         </div>
