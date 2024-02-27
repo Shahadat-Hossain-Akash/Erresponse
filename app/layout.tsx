@@ -26,7 +26,7 @@ export default async function RootLayout({
         <AuthProvider>
           <Providers>
             <Navbar />
-            <main className={`px-4 md:px-12 flex max-w-screen`}>
+            <main className={`px-4 md:px-12 flex max-w-screen w-full`}>
               {children}
             </main>
           </Providers>
