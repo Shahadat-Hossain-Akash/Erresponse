@@ -25,7 +25,7 @@ export default async function Home() {
   const closed = await fetchCount("CLOSED");
 
   return (
-    <div className="flex gap-4 flex-col font-quicksand min-h-screen text-zinc-500 max-w-screen mb-10">
+    <div className="flex gap-4 flex-col font-quicksand min-h-screen text-zinc-500 w-full mb-10">
       <div className="text-3xl sm:text-6xl font-semibold text-orange-400">
         Latest Issues
       </div>
